@@ -1,0 +1,35 @@
+================================================================================
+DR. ELENA ROSTOVA // AUDIO DIARY TRANSCRIPT (TERMINAL SAFE-NODE)
+Recorded: October 2, 2026 – 02:40 AM IST
+Location: Safehouse Node B, Near Ramavarmapuram, Thrissur (KL-08)
+================================================================================
+
+[AUDIO RECORDING - VOICE IS CALM, DELIBERATE]
+
+"If you have traced the repositories and arrived here, you are the Cyber Crime Task Force... 
+or perhaps the students from FOSS GECT and the Film Society who never stopped asking questions.
+
+When I first confronted John Vance about the 40GB outbound leaks, he told me it was an automated update. 
+He thought I was naive. He didn't know that my roots were in Free and Open Source Software. 
+At FOSS GECT, we were taught that black-box systems hide tyranny, while open source software guarantees 
+transparency. 
+
+Vance didn't just spy on the company; he altered SENTINEL-AI into an illegal mass surveillance apparatus 
+monitoring private citizens across the state. When he realized I had backed up the logs, he swiped 
+into Lab 304 with badge 9042, deleted my recovery hooks from main.py, and armed a 2-hour wipe countdown 
+to frame my disappearance as a kidnapping.
+
+He thought the morning backup would erase everything. But as the Film Society screening of 'Drishyam' 
+reminded us: an alibi is only as strong as the evidence left behind. And in open-source Git, 
+every commit hash is immutable. A backup shows what the present copy forgot.
+
+I went into hiding not out of fear, but to protect the evidence.
+Enter the coordinates from the whiteboard and blueprint. 
+Submit the key.
+Stop the wipe.
+
+You were never meant to find me. 
+You were meant to find the truth.
+
+— Elena Rostova"
+================================================================================

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPERATION AETHERFALL // Safehouse Node Terminal</title>
+  <style>
+    :root {
+      --bg: #06090e;
+      --card-bg: #0d1117;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --green: #2ea043;
+      --red: #f85149;
+      --amber: #d29922;
+      --cyan: #39c5bb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Consolas', monospace; }
+    body { background: var(--bg); color: #c9d1d9; padding: 24px; min-height: 100vh; }
+    .container { max-width: 900px; margin: 0 auto; }
+    header {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(88, 166, 255, 0.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    h1 { font-size: 22px; color: #f0f6fc; }
+    .timer-box {
+      background: #000;
+      border: 1px solid var(--red);
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-align: right;
+    }
+    .timer-label { font-size: 10px; color: var(--red); font-weight: bold; }
+    .timer-val { font-size: 26px; color: #ff7b72; font-weight: bold; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .quote-box {
+      background: #161b22;
+      border-left: 3px solid var(--amber);
+      padding: 14px 18px;
+      margin: 16px 0;
+      color: #e3b341;
+      font-style: italic;
+    }
+    .input-group { display: flex; gap: 10px; margin-top: 14px; }
+    input[type="text"] {
+      flex: 1;
+      background: #000;
+      border: 1px solid var(--border);
+      color: var(--cyan);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button.btn {
+      background: #238636;
+      border: none;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button.btn:hover { background: #2ea043; }
+    .status-msg { margin-top: 12px; padding: 10px; border-radius: 6px; display: none; font-size: 13px; }
+    .status-msg.success { display: block; background: rgba(46, 160, 67, 0.15); border: 1px solid var(--green); color: #7ee787; }
+    .status-msg.error { display: block; background: rgba(248, 81, 73, 0.15); border: 1px solid var(--red); color: #ff7b72; }
+    .climax-screen {
+      display: none;
+      background: #000;
+      color: #00ff66;
+      border: 2px solid #00ff66;
+      box-shadow: 0 0 25px rgba(0,255,102,0.3);
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div>
+      <div class="badge">FOSS GECT × GECT FILM SOCIETY // GROUND ZERO SAFEHOUSE</div>
+      <h1>OPERATION AETHERFALL // SAFEHOUSE TERMINAL</h1>
+      <p style="font-size: 12px; color: #8b949e;">Node: EXTERNAL-RELAY-KL-08 // Thrissur, Kerala</p>
+    </div>
+    <div class="timer-box">
+      <div class="timer-label">2-HOUR SERVER WIPE TIMER</div>
+      <div class="timer-val" id="wipeTimer">02:00:00</div>
+    </div>
+  </header>
+
+  <div class="card">
+    <div class="quote-box">
+      "IF YOU FOUND THIS, YOU FOLLOWED THE TRAIL. DO NOT TRUST THE STORY YOU WERE GIVEN."
+    </div>
+    <p>You have navigated across the distributed Git repositories to the off-campus backup node. The automatic wipe countdown is counting down the final minutes!</p>
+    
+    <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px;">
+      <h3>Step 1: Authenticate Ground Coordinates</h3>
+      <p style="font-size: 12px; color: #8b949e; margin-top: 4px;">Reconcile Latitude from <code>lab_photo.png</code> and Longitude from <code>floor_blueprint.png</code>:</p>
+      <div class="input-group">
+        <input type="text" id="coordInput" placeholder="Enter coordinates (e.g. 10.5276, 76.2144)">
+        <button class="btn" onclick="verifyCoords()">Lock Coordinates</button>
+      </div>
+      <div id="coordMsg" class="status-msg"></div>
+    </div>
+
+    <div id="step2Block" style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; display: none;">
+      <h3>Step 2: Emergency Root Override Key</h3>
+      <p style="font-size: 12px; color: #8b949e; margin-top: 4px;">Submit full combined passcode (Stage 1 Recovery Token + Stage 2 Traitor Key):</p>
+      <div class="input-group">
+        <input type="text" id="masterKeyInput" placeholder="Enter Master Key (AETHER_OCT2-9042-304)">
+        <button class="btn" style="background: #da3633;" onclick="disarmWipe()">STOP SERVER WIPE</button>
+      </div>
+      <div id="masterMsg" class="status-msg"></div>
+    </div>
+  </div>
+
+  <div id="climaxScreen" class="climax-screen">
+    <h2 style="font-size: 24px; margin-bottom: 12px;">AETHERFALL PROTOCOL: COMPLETE</h2>
+    <p style="font-size: 14px; margin-bottom: 16px;">EVIDENCE RECOVERED  //  SERVER WIPE: STOPPED  //  COPIES SAVED TO EXTERNAL SERVERS</p>
+    <div style="background: #001a08; border: 1px solid #00ff66; padding: 18px; border-radius: 6px; text-align: left; font-size: 14px; margin-bottom: 20px;">
+      <p>If you are seeing this, the evidence survived.</p>
+      <p>You were never meant to find me.</p>
+      <p>You were meant to find the truth.</p>
+      <p style="margin-top: 8px; font-weight: bold;">— E. ROSTOVA</p>
+    </div>
+    <div style="font-size: 26px; color: #fff; letter-spacing: 3px; margin: 20px 0;">CASE CLOSED</div>
+    <p style="color: #99ffcc; font-size: 13px; margin-bottom: 8px;">The evidence you recovered is automatically saved to an external server. The countdown disappears.</p>
+    <p style="color: #99ffcc; font-size: 13px; margin-bottom: 16px;">Somewhere in the distance, a chime sound echoes through the abandoned facility.</p>
+    <p style="font-size: 17px; color: #ffeb3b; font-style: italic; margin-bottom: 16px;">"YOU DIDN'T FIND ME. YOU FOUND WHAT I LEFT BEHIND."</p>
+    <p style="font-size: 13px; color: #88ccaa;">The screen shuts down completely. Then, from the recovered files, one last detail becomes clear: Dr. Elena Rostova is still alive.</p>
+    <p style="font-size: 15px; color: #00ff66; font-weight: bold; margin-top: 16px;">The investigation is over. The truth is not.<br>END OF OPERATION AETHERFALL</p>
+    <p style="font-size: 12px; color: #aaa; margin-top: 10px;">Presented by FOSS GECT × GECT Film Society</p>
+  </div>
+</div>
+
+<script>
+  let totalSeconds = 2 * 3600;
+  let timerActive = true;
+  function updateTimer() {
+    if (!timerActive || totalSeconds <= 0) return;
+    totalSeconds--;
+    const h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+    const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+    const s = String(totalSeconds % 60).padStart(2, '0');
+    document.getElementById('wipeTimer').innerText = `${h}:${m}:${s}`;
+  }
+  setInterval(updateTimer, 1000);
+
+  function verifyCoords() {
+    const val = document.getElementById('coordInput').value.trim();
+    const msg = document.getElementById('coordMsg');
+    if (val.includes('10.5276') && val.includes('76.2144')) {
+      msg.className = 'status-msg success';
+      msg.innerHTML = '<strong>[+] GEOLOCATION AUTHENTICATED:</strong> 10.5276° N, 76.2144° E (Thrissur Ground Zero locked). Proceed to Master Override!';
+      document.getElementById('step2Block').style.display = 'block';
+    } else {
+      msg.className = 'status-msg error';
+      msg.innerHTML = '<strong>[-] ERROR:</strong> Coordinates invalid. Reconcile Latitude (10.5276) and Longitude (76.2144).';
+    }
+  }
+
+  function disarmWipe() {
+    const val = document.getElementById('masterKeyInput').value.trim().toUpperCase();
+    const msg = document.getElementById('masterMsg');
+    if (val === 'AETHER_OCT2-9042-304' || val === 'AETHERFALL') {
+      timerActive = false;
+      document.getElementById('wipeTimer').innerText = 'ABORTED';
+      document.getElementById('wipeTimer').style.color = '#7ee787';
+      msg.className = 'status-msg success';
+      msg.innerHTML = '<strong>[+] OVERRIDE ACCEPTED:</strong> Server wipe terminated!';
+      document.getElementById('climaxScreen').style.display = 'block';
+      document.getElementById('climaxScreen').scrollIntoView({ behavior: 'smooth' });
+    } else {
+      msg.className = 'status-msg error';
+      msg.innerHTML = '<strong>[-] REJECTED:</strong> Master Key mismatch. Format: AETHER_OCT2-9042-304';
+    }
+  }
+</script>
+
+</body>
+</html>

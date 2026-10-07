@@ -1,0 +1,7 @@
+PingID,Timestamp,SatelliteTransponder,RawLatitude,RawLongitude,AltitudeMeters,SignalStrength,LocationNote
+SAT-8801,2026-10-02 01:10:14,INSAT-4CR,9.9312,76.2673,12,88%,Cochin Port Terminal [Decoy Beacon 01]
+SAT-8802,2026-10-02 01:25:40,GSAT-11,12.9716,77.5946,920,45%,Electronic City Bangalore [Decoy Beacon 02]
+SAT-8803,2026-10-02 01:40:02,INSAT-3DR,11.6854,76.1320,750,60%,Vythiri Hills Wayanad [Decoy Beacon 03]
+SAT-8804,2026-10-02 01:55:18,IRNSS-1A,8.5241,76.9366,18,72%,Thiruvananthapuram Tech Park [Decoy Beacon 04]
+SAT-8805,2026-10-02 02:15:33,IRNSS-1I,10.5276,76.2144,35,99%,CONFIRMED GROUND ZERO: Thrissur Industrial Substation
+SAT-8806,2026-10-02 02:30:10,GSAT-7A,11.2588,75.7804,5,54%,Kozhikode Beach Relay [Decoy Beacon 05]
